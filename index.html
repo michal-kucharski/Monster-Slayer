@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Monster Slayer</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <div id="app">
+      <section class="row">
+        <div class="small-6 columns">
+          <h1 class="text-center">YOU</h1>
+          <div class="healthbar">
+            <div
+              class="healthbar text-center"
+              style="background-color: green; margin: 0; color: white;"
+              :style="{width: playerHealth + '%'}"
+            >
+              <p>{{ playerHealth }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="small-6 columns">
+          <h1 class="text-center">MONSTER</h1>
+          <div class="healthbar">
+            <div
+              class="healthbar text-center"
+              style="background-color: green; margin: 0; color: white;"
+              :style="{width: monsterHealth + '%'}"
+            >
+              <p>{{ monsterHealth }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section v-if="!isRunning" class="row controls">
+        <div class="small-12 columns">
+          <button @click="startGame" id="start-game">
+            START NEW GAME
+          </button>
+        </div>
+      </section>
+      <section
+        v-else
+        @keyup.a="playerAttack"
+        @keyup.s="specialAttack"
+        @keyup.h="playerHealing"
+        @keyup.d="playerDefense"
+        @keyup.g="giveUp"
+        class="row controls"
+      >
+        <div class="small-12 columns">
+          <button @click="playerAttack" id="attack">
+            ATTACK
+          </button>
+          <button @click="specialAttack" id="special-attack">
+            SPECIAL ATTACK <br />
+            <span>Cooldown : {{ this.specialCooldown }}</span>
+          </button>
+          <button @click="playerHealing" id="heal">
+            HEAL <br />
+            <span>Cooldown : {{ this.healingCooldown }}</span>
+          </button>
+          <button @click="playerDefense" id="defense-up">
+            DEFENSE UP <br />
+            <span>Cooldown : {{ this.defenseCooldown }}</span>
+          </button>
+          <button @click="giveUp" id="give-up">GIVE UP</button>
+        </div>
+      </section>
+
+      <section class="row keyboard-control">
+        <h2>Controls:</h2>
+        <p>Attack : 'A',</p>
+        <p>Special Attack : 'S',</p>
+        <p>Heal : 'H',</p>
+        <p>Defense Up : 'D',</p>
+        <p>Give Up : 'G',</p>
+      </section>
+
+      <section class="row log">
+        <div class="small-12 columns">
+          <ul>
+            <li
+              v-for="turn in turns"
+              :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}"
+            >
+              {{ turn.text }}
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

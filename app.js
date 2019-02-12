@@ -164,6 +164,7 @@ new Vue({
         alert(
           "You slayed a Monster by he managed to tear you apart. You bleeded to death..."
         );
+        this.isRunning = false;
         return;
       }
       if (this.playerHealth <= 0) {

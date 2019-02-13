@@ -162,7 +162,7 @@ new Vue({
     checkWin: function() {
       if (this.playerHealth <= 0 && this.monsterHealth <= 0) {
         alert(
-          "You slayed a Monster by he managed to tear you apart. You bleeded to death..."
+          "You slayed a Monster but he managed to tear you apart. You bleeded to death..."
         );
         this.isRunning = false;
         return;

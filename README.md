@@ -1,5 +1,5 @@
 # Monster-Slayer
-This is my version of first project in Mark Schwarzmuller Vue.js course on Udemy. 
+This is my version of first project in Maximillian Schwarzmuller Vue.js course on Udemy. 
 
 I added some depth to the game with few new mechanics. I was writing whole JS code on my own, but template HTML and CSS are from course resources. 
 
